@@ -361,8 +361,8 @@ def run_stock_analysis(stock_symbol, analysis_date, analysts, research_depth, ll
             logger.info(f"🌐 [SiliconFlow] 使用模型: {llm_model}")
             logger.info(f"🌐 [SiliconFlow] API端点: https://api.siliconflow.cn/v1")
         elif llm_provider == "custom_openai":
-            # 自定义OpenAI端点
-            custom_base_url = st.session_state.get("custom_openai_base_url", "https://api.openai.com/v1")
+            # 自定义OpenAI端点 - 使用环境变量或默认值
+            custom_base_url = os.getenv("CUSTOM_OPENAI_BASE_URL", "https://api.openai.com/v1")
             config["backend_url"] = custom_base_url
             config["custom_openai_base_url"] = custom_base_url
             logger.info(f"🔧 [自定义OpenAI] 使用模型: {llm_model}")
